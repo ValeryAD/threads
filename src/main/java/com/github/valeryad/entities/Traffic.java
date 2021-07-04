@@ -9,8 +9,8 @@ import java.util.concurrent.TimeUnit;
 public class Traffic implements Runnable {
 
     private static final int TIME_BETWEEN_CARS = 1000;
-    private int carAmount;
-    private Parking parking;
+    private final Parking parking;
+    private final int carAmount;
     private final Random random;
 
     public Traffic(int carAmount, Parking parking) {

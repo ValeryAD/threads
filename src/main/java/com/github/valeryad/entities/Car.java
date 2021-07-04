@@ -19,14 +19,6 @@ public class Car extends Thread {
         parkingTime = 1000 + new Random().nextInt(3000);
     }
 
-    public CarModels getModel() {
-        return model;
-    }
-
-    public CarColors getColor() {
-        return color;
-    }
-
     @Override
     public void run() {
         boolean wasPlacedInParking = parking.placeCar(this);
@@ -44,20 +36,6 @@ public class Car extends Thread {
     public String toString() {
         return String.format("%s %s", color, model);
     }
-
-    /*@Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || this.getClass() != o.getClass()) return false;
-
-        Car car = (Car) o;
-
-        boolean m = car.model != null ? model.toString().equals(car.model.toString()) : model == null;
-        System.out.println("models equal = " + m);
-        boolean c = car.color != null ? color.toString().equals(car.color.toString()) : color == null;
-        System.out.println("colors equal = " + c);
-        return m && c;
-    }*/
 
     @Override
     public boolean equals(Object o) {
