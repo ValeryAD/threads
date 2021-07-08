@@ -7,6 +7,9 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Car extends Thread {
+    private static final int BASE_PARKING_TIME = 1200;
+    private static final int MAX_INCREMENT_OF_PARKING_TIME = 4000;
+
     private CarModels model;
     private CarColors color;
     private Parking parking;
@@ -16,7 +19,7 @@ public class Car extends Thread {
         this.model = model;
         this.color = color;
         this.parking = parking;
-        parkingTime = 1000 + new Random().nextInt(3000);
+        parkingTime = BASE_PARKING_TIME + new Random().nextInt(MAX_INCREMENT_OF_PARKING_TIME);
     }
 
     @Override

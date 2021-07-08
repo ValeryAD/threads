@@ -7,8 +7,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Traffic implements Runnable {
-
     private static final int TIME_BETWEEN_CARS = 1000;
+
     private final Parking parking;
     private final int carAmount;
     private final Random random;
@@ -22,8 +22,7 @@ public class Traffic implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < carAmount; i++) {
-            Car car = new Car(getRandomModel(), getRandomColor(), parking);
-            car.start();
+            new Car(getRandomModel(), getRandomColor(), parking).start();
             try {
                 TimeUnit.MILLISECONDS.sleep(TIME_BETWEEN_CARS);
             } catch (InterruptedException e) {
