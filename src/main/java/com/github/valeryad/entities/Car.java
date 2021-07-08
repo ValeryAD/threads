@@ -7,6 +7,8 @@ import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Car extends Thread {
+    private static final String INTERRUPTED_ERROR_MESSAGE = "Something got wrong and %s can't wait any more";
+
     private static final int BASE_PARKING_TIME = 1200;
     private static final int MAX_INCREMENT_OF_PARKING_TIME = 4000;
 
@@ -28,7 +30,7 @@ public class Car extends Thread {
         try {
             TimeUnit.MILLISECONDS.sleep(parkingTime);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.printf(INTERRUPTED_ERROR_MESSAGE, this);
         }
         if (wasPlacedInParking) {
             parking.releaseCar(this);

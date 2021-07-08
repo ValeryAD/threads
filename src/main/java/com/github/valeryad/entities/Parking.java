@@ -10,6 +10,7 @@ public class Parking {
     private static final int WAITING_TIME_LIMIT = 1800;
     private final int SPOTS_LIMIT = 2;
 
+    private static final String INTERRUPTED_ERROR_MESSAGE = "Because of technical issues the %s can't take place at the parking";
     private static final String CAR_IS_APPROACHING_MESSAGE = "%s is approaching the parking. Parking has %d free spots%n";
     private static final String FULL_PARKING_MESSAGE = "The parking is full and %s is waiting for releasing spot%n";
     private static final String DRIVE_AWAY_MESSAGE = "%s can't wait any more and drive away%n";
@@ -39,7 +40,7 @@ public class Parking {
             System.out.printf("%" + TAKE_SPOT_MESSAGE, car);
 
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            System.err.printf(INTERRUPTED_ERROR_MESSAGE, car);
         } finally {
             lock.unlock();
         }
